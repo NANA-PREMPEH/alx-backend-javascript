@@ -1,16 +1,14 @@
-import { createUser, uploadPhoto } from './utils';
+import { uploadPhoto, createUser } from './utils';
 
-function handleProfileSignup() {
-  return Promise.all([uploadPhoto(), createUser()])
-    .then((values) => {
-      const { body } = values[0];
-      const { firstName, lastName } = values[1];
-
-      console.log(`${body} ${firstName} ${lastName}`);
-    })
-    .catch(() => {
-      console.log('Signup system offline');
-    });
+function handleProfileSignup(firstName, lastName, fileName) {
+    // Use Promise.all to wait for all promises to resolve
+    Promise.all([createUser(firstName, lastName), uploadPhoto(fileName)])
+        .then(([user, photo]) => {
+            console.log(`body: ${photo.body} firstName: ${user.firstName} lastName: ${user.lastName}`)
+        })
+        .catch(() => {
+            console.log('Signup system offline');
+        });
 }
 
 export default handleProfileSignup;
