@@ -1,13 +1,9 @@
-function getResponseFromAPI() {
-  return new Promise((resolve, reject) => {
-    /* eslint-disable */
-      if (true) {
+const getResponseFromAPI = () => new Promise((resolve, reject) => {
+    if (true) {
         resolve();
-      } else {
+    } else {
         reject();
-      }
-      /* eslint-enable */
-  });
-}
+    }
+});
 
 export default getResponseFromAPI;
